@@ -3,6 +3,7 @@ import Credentials from "next-auth/providers/credentials";
 import z from "zod";
 
 export const authConfig = {
+    trustHost: true,
     pages: {
         signIn: '/login',
     },
