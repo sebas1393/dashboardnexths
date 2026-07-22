@@ -121,15 +121,12 @@ export async function updateInvoice(
   redirect("/dashboard/invoices");
 }
 export async function deleteInvoice(id: string) {
-  //throw new Error("Manualy added error");
   try {
     await sql`
         DELETE FROM invoices WHERE id=${id}`;
   } catch (error) {
     console.log(error);
-    return {
-      message: "Database Error trying to delete the invoice",
-    };
+    throw new Error('Something went wrong.');
   }
 
   revalidatePath("/dashboard/invoices");
